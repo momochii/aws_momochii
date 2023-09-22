@@ -20,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+/***** board *****/
+Route::get('/board', [App\Http\Controllers\boardController::class, 'index'])->name('board');
+Route::get('/board/write/{id?}', [App\Http\Controllers\boardController::class, 'write'])->where('id','[0-9]+')->name('board.write');
+Route::post('/board/proc/', [App\Http\Controllers\boardController::class, 'proc'])->name('board.proc');
+Route::get('/board/view/{id}', [App\Http\Controllers\boardController::class, 'view'])->where('id','[0-9]+')->name('board.view');
